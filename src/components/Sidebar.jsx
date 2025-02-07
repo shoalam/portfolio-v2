@@ -41,12 +41,12 @@ export default function Sidebar({ setActiveSection }) {
               <i className="fa fa-briefcase"></i> Portfolio
             </Link>
           </li>
-          <li>
+          {/*<li>
             <Link href="#blog" onClick={() => setActiveSection("blog")}>
               {" "}
               <i className="fa fa-envelope"></i> Blog
             </Link>
-          </li>
+          </li>*/}
           <li>
             <Link href="#contact" onClick={() => setActiveSection("contact")}>
               {" "}
