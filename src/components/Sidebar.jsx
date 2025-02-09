@@ -1,58 +1,48 @@
+"use client";
+import { navItems } from "@/data/data";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-export default function Sidebar({ setActiveSection }) {
+export default function Sidebar() {
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
   return (
-    <div className="aside">
-      <div className="nav-toggler">
+    <div className={`aside ${showSidebar ? "open" : ""}`}>
+      <div
+        className={`nav-toggler ${showSidebar ? "open" : ""}`}
+        onClick={toggleSidebar}
+      >
         <span></span>
       </div>
 
       <div className="aside-inner">
-        <div className="logo">
-          <a href="#">DevTuhin</a>
+        <div className="flex justify-center">
+          <img
+            src="/tuhinphoto.jpg"
+            alt="profile"
+            className="shadow-dark w-20 h-20 rounded-full"
+          />
         </div>
+        {/*<div className="logo">
+          <a href="#">DevTuhin</a>
+        </div>*/}
 
         <ul className="nav">
-          <li>
-            <Link href="#home" onClick={() => setActiveSection("home")}>
-              {" "}
-              <i className="fa fa-home"></i> Home
-            </Link>
-          </li>
-          <li>
-            <Link href="#about" onClick={() => setActiveSection("about")}>
-              {" "}
-              <i className="fa fa-user"></i> About
-            </Link>
-          </li>
-          <li>
-            <Link href="#services" onClick={() => setActiveSection("services")}>
-              {" "}
-              <i className="fa fa-list"></i> Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#portfolio"
-              onClick={() => setActiveSection("portfolio")}
-            >
-              {" "}
-              <i className="fa fa-briefcase"></i> Portfolio
-            </Link>
-          </li>
-          {/*<li>
-            <Link href="#blog" onClick={() => setActiveSection("blog")}>
-              {" "}
-              <i className="fa fa-envelope"></i> Blog
-            </Link>
-          </li>*/}
-          <li>
-            <Link href="#contact" onClick={() => setActiveSection("contact")}>
-              {" "}
-              <i className="fa fa-comments"></i> Contact
-            </Link>
-          </li>
+          {navItems &&
+            navItems?.map((item) => {
+              return (
+                <li key={item?.id}>
+                  <Link href={item?.link}>
+                    {" "}
+                    <i className="fa fa-home"></i> {item?.title}
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
 
         <div className="copyright-text">

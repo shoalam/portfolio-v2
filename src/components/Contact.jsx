@@ -1,6 +1,55 @@
-import React from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [storedData, setStoredData] = useState([]);
+
+  // On initial load, check if there's data in localStorage
+  useEffect(() => {
+    const savedData = localStorage.getItem("formData");
+    if (savedData) {
+      setFormData(JSON.parse(savedData));
+    }
+
+    // Load stored data from localStorage and show it in a table
+    const storedEntries = localStorage.getItem("allFormData");
+    if (storedEntries) {
+      setStoredData(JSON.parse(storedEntries));
+    }
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form data submitted:", formData);
+    // Store data in localStorage
+    localStorage.setItem("formData", JSON.stringify(formData));
+
+    const currentData = JSON.parse(localStorage.getItem("allFormData") || "[]");
+    console.log("Existing data from allFormData before pushing:", currentData);
+    currentData.push(formData);
+    localStorage.setItem("allFormData", JSON.stringify(currentData));
+
+    // Update state to reflect the new data in the table
+    setStoredData(currentData);
+  };
+
+  console.log(storedData);
   return (
     <section className="contact section" id="contact">
       <div className="container">
@@ -34,7 +83,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <form action="#" className="contact-form padd-15">
+        <form className="contact-form padd-15" onSubmit={handleSubmit}>
           <div className="row">
             <div className="form-item col-6 padd-15">
               <div className="form-group">
@@ -42,6 +91,8 @@ export default function Contact() {
                   type="text"
                   className="form-control"
                   placeholder="Name*"
+                  name="name"
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -51,6 +102,8 @@ export default function Contact() {
                   type="text"
                   className="form-control"
                   placeholder="Email*"
+                  name="email"
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -62,6 +115,8 @@ export default function Contact() {
                   type="text"
                   className="form-control"
                   placeholder="Subject*"
+                  name="subject"
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -72,6 +127,8 @@ export default function Contact() {
                 <textarea
                   className="form-control"
                   placeholder="Your Message..."
+                  name="message"
+                  onChange={handleChange}
                 ></textarea>
               </div>
             </div>
@@ -84,6 +141,26 @@ export default function Contact() {
             </div>
           </div>
         </form>
+        {storedData.length > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              {storedData.map((entry, index) => (
+                <tr key={index}>
+                  <td>{entry.name}</td>
+                  <td>{entry.email}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No data stored yet</p>
+        )}
       </div>
     </section>
   );

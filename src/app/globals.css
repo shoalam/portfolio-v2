@@ -258,6 +258,8 @@ select {
   height: 100%;
   padding: 30px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .aside .logo {
@@ -314,17 +316,21 @@ select {
   transition: all 0.3s ease;
 }
 
+/* Navbar toggler style (hamburger) */
 .aside .nav-toggler span {
   height: 2px;
   width: 18px;
   display: inline-block;
   position: relative;
+  background-color: black; /* Hamburger default color */
 }
 
+/* When the sidebar is open, change the hamburger to a cross */
 .aside .nav-toggler.open span {
-  background-color: transparent;
+  background-color: transparent; /* Make the hamburger line transparent */
 }
 
+/* Top line (before) */
 .aside .nav-toggler span::before {
   content: "";
   height: 2px;
@@ -332,14 +338,17 @@ select {
   position: absolute;
   top: -6px;
   left: 0px;
+  background-color: black;
+  transition: transform 0.3s ease; /* Smooth transition for rotation */
 }
 
+/* When the sidebar is open, rotate the top line */
 .aside .nav-toggler.open span::before {
-  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-  top: 0px;
+  top: 0px; /* Adjust position */
 }
 
+/* Bottom line (after) */
 .aside .nav-toggler span::after {
   content: "";
   height: 2px;
@@ -347,18 +356,31 @@ select {
   position: absolute;
   top: 6px;
   left: 0px;
+  background-color: black;
+  transition: transform 0.3s ease; /* Smooth transition for rotation */
 }
 
+/* When the sidebar is open, rotate the bottom line */
 .aside .nav-toggler.open span::after {
-  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
-  top: 0px;
+  top: 0px; /* Adjust position */
+}
+
+/* Sidebar visibility handling */
+.aside.open .sidebar-content {
+  transform: translateX(0); /* Adjust this for sidebar animation */
+}
+
+.aside .sidebar-content {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease; /* Smooth transition for sliding in/out */
 }
 
 .aside .nav {
   list-style: none;
   margin: 30px 0 80px;
   padding: 0;
+  flex: 1;
 }
 
 .aside .nav li {
@@ -1267,7 +1289,7 @@ body.dark .shadow-dark {
   }
 
   .section {
-    left: 0;
+    position: static;
   }
 
   .section.open {
