@@ -33,7 +33,7 @@ select {
   background-color: #f2f2fc;
   min-height: 100vh;
   display: block;
-  padding: 0 30px;
+  padding: 50px 30px;
   position: fixed;
   left: 270px;
   top: 0;
@@ -431,6 +431,8 @@ select {
   min-height: 100vh;
   display: -ms-flexbox;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home .intro {
