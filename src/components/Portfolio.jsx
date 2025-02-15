@@ -31,7 +31,7 @@ export default function Portfolio() {
           <div className="portfolio-item-inner shadow-dark">
             <div className="portfolio-img">
               <img
-                src="/portfolio/pesantren-alandalus.com.png"
+                src="/assets/portfolio/pesantren-alandalus.com.png"
                 alt="portfolio"
               />
             </div>
@@ -58,7 +58,7 @@ export default function Portfolio() {
           <div className="portfolio-item-inner shadow-dark">
             <div className="portfolio-img">
               <img
-                src="/portfolio/jadwal.pesantren-alandalus.com.png"
+                src="/assets/portfolio/jadwal.pesantren-alandalus.com.png"
                 alt="portfolio"
               />
             </div>
@@ -84,7 +84,7 @@ export default function Portfolio() {
           <div className="portfolio-item-inner shadow-dark">
             <div className="portfolio-img">
               <img
-                src="/portfolio/pendaftaran.stitek.balikdiwa.ac.id.png"
+                src="/assets/portfolio/pendaftaran.stitek.balikdiwa.ac.id.png"
                 alt="portfolio"
               />
             </div>
@@ -111,7 +111,7 @@ export default function Portfolio() {
           <div className="portfolio-item-inner shadow-dark">
             <div className="portfolio-img">
               <img
-                src="/portfolio/pengaduan.pesantren-alandalus.com.png"
+                src="/assets/portfolio/pengaduan.pesantren-alandalus.com.png"
                 alt="portfolio"
               />
             </div>
@@ -137,7 +137,7 @@ export default function Portfolio() {
         <div className="portfolio-item padd-15" data-category="web-design">
           <div className="portfolio-item-inner shadow-dark">
             <div className="portfolio-img">
-              <img src="/portfolio/sik.punya.id.png" alt="portfolio" />
+              <img src="/assets/portfolio/sik.punya.id.png" alt="portfolio" />
             </div>
             <div className="portfolio-info">
               <h4>Web Design</h4>
@@ -151,7 +151,7 @@ export default function Portfolio() {
         <div className="portfolio-item padd-15" data-category="web-design">
           <div className="portfolio-item-inner shadow-dark">
             <div className="portfolio-img">
-              <img src="/portfolio/anakteladan.id.png" alt="portfolio" />
+              <img src="/assets/portfolio/anakteladan.id.png" alt="portfolio" />
             </div>
             <div className="portfolio-info">
               <h4>Web Design</h4>

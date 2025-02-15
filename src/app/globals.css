@@ -694,6 +694,27 @@ select {
   margin: 0;
 }
 
+/* Skills Section */
+
+.personal-skills {
+  margin-top: 40px;
+}
+
+.personal-skills h3 {
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #302e4d;
+}
+
+.skill-row {
+  gap: 30px;
+  align-items: center;
+}
+
+.skill-item img {
+  width: 50px;
+}
 /* Service Section */
 .service .container {
   padding-bottom: 40px;
