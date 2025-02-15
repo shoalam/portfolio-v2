@@ -1,4 +1,5 @@
 import React from "react";
+import { FaLaptop } from "react-icons/fa";
 
 export default function Services() {
   return (
@@ -13,7 +14,7 @@ export default function Services() {
         <div className="service-item padd-15">
           <div className="service-item-inner">
             <div className="icon">
-              <i className="fa fa-laptop"></i>
+              <FaLaptop width={24} height={24} />
             </div>
             <h4>Web Design</h4>
             <p>

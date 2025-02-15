@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { db, collection, addDoc, getDocs } from "@/lib/firebaseConfig";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,20 +12,23 @@ export default function Contact() {
   });
 
   const [storedData, setStoredData] = useState([]);
+  const [statusMessage, setStatusMessage] = useState({ type: "", message: "" });
 
-  // On initial load, check if there's data in localStorage
+  // Fetch form data from Firestore on initial load
   useEffect(() => {
-    const savedData = localStorage.getItem("formData");
-    if (savedData) {
-      setFormData(JSON.parse(savedData));
-    }
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(collection(db, "contactmessages"));
+      const formEntries = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setStoredData(formEntries);
+    };
 
-    // Load stored data from localStorage and show it in a table
-    const storedEntries = localStorage.getItem("allFormData");
-    if (storedEntries) {
-      setStoredData(JSON.parse(storedEntries));
-    }
+    fetchData();
   }, []);
+
+  console.log(storedData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,22 +38,48 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (statusMessage.message) {
+      const timer = setTimeout(() => {
+        setStatusMessage({ type: "", message: "" });
+      }, 5000); // 5 seconds
+
+      return () => clearTimeout(timer); // Cleanup to prevent memory leaks
+    }
+  }, [statusMessage]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data submitted:", formData);
-    // Store data in localStorage
-    localStorage.setItem("formData", JSON.stringify(formData));
 
-    const currentData = JSON.parse(localStorage.getItem("allFormData") || "[]");
-    console.log("Existing data from allFormData before pushing:", currentData);
-    currentData.push(formData);
-    localStorage.setItem("allFormData", JSON.stringify(currentData));
+    try {
+      // Store data in Firestore
+      const docRef = await addDoc(collection(db, "contactmessages"), formData);
+      //console.log("Document written with ID: ", docRef.id);
 
-    // Update state to reflect the new data in the table
-    setStoredData(currentData);
+      // Update state with new data
+      setStoredData((prev) => [...prev, { id: docRef.id, ...formData }]);
+
+      setStatusMessage({
+        type: "success",
+        message: "Message sent successfully!",
+      });
+
+      // Clear form fields after submission
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      setStatusMessage({
+        type: "error",
+        message: "Failed to send message. Try again!",
+      });
+    }
   };
 
-  console.log(storedData);
   return (
     <section className="contact section" id="contact">
       <div className="row">
@@ -81,7 +111,40 @@ export default function Contact() {
           <p>shoalamdu@gmail.com</p>
         </div>
       </div>
+      {statusMessage.message && (
+        <div
+          className={`alert ${
+            statusMessage.type === "success" ? "alert-success" : "alert-error"
+          }`}
+        >
+          {statusMessage.message}
+        </div>
+      )}
+      <style>
+        {`
+        .alert {
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+        max-width: 450px;
+        width: 100%;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+      }
+      .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+      }
+      .alert-error {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
 
+        `}
+      </style>
       <form className="contact-form padd-15" onSubmit={handleSubmit}>
         <div className="row">
           <div className="form-item col-6 padd-15">
@@ -92,17 +155,19 @@ export default function Contact() {
                 placeholder="Name*"
                 name="name"
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
           <div className="form-item col-6 padd-15">
             <div className="form-group">
               <input
-                type="text"
+                type="email"
                 className="form-control"
                 placeholder="Email*"
                 name="email"
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
@@ -128,6 +193,7 @@ export default function Contact() {
                 placeholder="Your Message..."
                 name="message"
                 onChange={handleChange}
+                required
               ></textarea>
             </div>
           </div>
@@ -140,26 +206,6 @@ export default function Contact() {
           </div>
         </div>
       </form>
-      {storedData.length > 0 ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {storedData.map((entry, index) => (
-              <tr key={index}>
-                <td>{entry.name}</td>
-                <td>{entry.email}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>No data stored yet</p>
-      )}
     </section>
   );
 }

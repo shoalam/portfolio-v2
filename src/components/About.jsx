@@ -1,3 +1,6 @@
+import { techIcons } from "@/data/data";
+import Image from "next/image";
+
 export default function About() {
   return (
     <section className="about section" id="about">
@@ -76,6 +79,21 @@ export default function About() {
                   >
                     Hire Me
                   </a>
+                </div>
+              </div>
+              <div className="personal-skills">
+                <h3>Worked With:</h3>
+                <div className="row skill-row padd-15">
+                  {techIcons?.map((item, i) => (
+                    <div className="skill-item" key={i}>
+                      <Image
+                        src={item.icon}
+                        alt={item.title}
+                        width={40}
+                        height={40}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
