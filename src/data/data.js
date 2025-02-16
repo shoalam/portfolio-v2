@@ -127,37 +127,52 @@ export const techIcons = [
   },
   {
     id: 11,
+    icon: "/assets/icons/ts.png",
+    title: "TypeScript",
+  },
+  {
+    id: 12,
+    icon: "/assets/icons/antd.png",
+    title: "Ant Design",
+  },
+  {
+    id: 13,
     icon: "/assets/icons/express.png",
     title: "Express.js",
   },
   {
-    id: 12,
+    id: 14,
     icon: "/assets/icons/nodejs.png",
     title: "Node.js",
   },
   {
-    id: 13,
+    id: 15,
     icon: "/assets/icons/php.png",
     title: "PHP",
   },
   {
-    id: 14,
-    icon: "/assets/icons/laravel.png",
+    id: 16,
+    icon: "/assets/icons/laravel.svg",
     title: "Laravel",
   },
   {
-    id: 15,
-    icon: "/assets/icons/mongodb.jpg",
+    id: 17,
+    icon: "/assets/icons/mongodb.png",
     title: "MongoDB",
   },
   {
-    id: 16,
+    id: 18,
     icon: "/assets/icons/firebase.png",
     title: "Firebase",
   },
   {
-    id: 17,
+    id: 19,
     icon: "/assets/icons/mysql.png",
     title: "MySQL",
+  },
+  {
+    id: 20,
+    icon: "/assets/icons/wp.png",
+    title: "WordPress",
   },
 ];

@@ -81,84 +81,18 @@ export default function About() {
                   </a>
                 </div>
               </div>
-              <div className="personal-skills">
-                <h3>Worked With:</h3>
-                <div className="row skill-row padd-15">
-                  {techIcons?.map((item, i) => (
-                    <div className="skill-item" key={i}>
-                      <Image
-                        src={item.icon}
-                        alt={item.title}
-                        width={40}
-                        height={40}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
+          </div>
 
-            <div className="skills padd-15">
-              <div className="row">
-                <div className="skill-item padd-15">
-                  <h5>Laravel</h5>
-                  <div className="progress">
-                    <div className="progress-in" style={{ width: "85%" }}></div>
-                    <div className="skill-percent">85%</div>
-                  </div>
+          <div className="personal-skills">
+            <h3>Technology Stack Includes:</h3>
+            <div className="row skill-row padd-15">
+              {techIcons?.map((item, i) => (
+                <div className="skill-item" key={i}>
+                  <img src={item?.icon} alt={item?.title} />
+                  <h4>{item?.title}</h4>
                 </div>
-
-                <div className="skill-item padd-15">
-                  <h5>PHP</h5>
-                  <div className="progress">
-                    <div className="progress-in" style={{ width: "80%" }}></div>
-                    <div className="skill-percent">80%</div>
-                  </div>
-                </div>
-
-                <div className="skill-item padd-15">
-                  <h5>Wordpress</h5>
-                  <div className="progress">
-                    <div className="progress-in" style={{ width: "90%" }}></div>
-                    <div className="skill-percent">90%</div>
-                  </div>
-                </div>
-                <div className="skill-item padd-15">
-                  <h5>Node/Express.js</h5>
-                  <div className="progress">
-                    <div className="progress-in" style={{ width: "70%" }}></div>
-                    <div className="skill-percent">70%</div>
-                  </div>
-                </div>
-                <div className="skill-item padd-15">
-                  <h5>React</h5>
-                  <div className="progress">
-                    <div className="progress-in" style={{ width: "90%" }}></div>
-                    <div className="skill-percent">90%</div>
-                  </div>
-                </div>
-                <div className="skill-item padd-15">
-                  <h5>Javascript</h5>
-                  <div className="progress">
-                    <div className="progress-in" style={{ width: "90%" }}></div>
-                    <div className="skill-percent">90%</div>
-                  </div>
-                </div>
-                <div className="skill-item padd-15">
-                  <h5>CSS3</h5>
-                  <div className="progress">
-                    <div className="progress-in" style={{ width: "95%" }}></div>
-                    <div className="skill-percent">95%</div>
-                  </div>
-                </div>
-                <div className="skill-item padd-15">
-                  <h5>HTML5</h5>
-                  <div className="progress">
-                    <div className="progress-in" style={{ width: "95%" }}></div>
-                    <div className="skill-percent">95%</div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
