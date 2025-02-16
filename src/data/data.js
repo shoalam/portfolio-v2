@@ -29,7 +29,50 @@ export const navItems = [
   },
 ];
 
-export const servicesItems = [{}];
+export const servicesItems = [
+  {
+    id: 1,
+    icon: "fa-laptop",
+    title: "Web Design",
+    description:
+      "Is the process of creating visually appealing and functional websites that are easy to use and navigate.",
+  },
+  {
+    id: 2,
+    icon: "fa-code",
+    title: "Web Development",
+    description:
+      "Is process of managing learning and work in order to move toward a determined and evolving future.",
+  },
+  {
+    id: 3,
+    icon: "fa-paint-brush",
+    title: "Graphic Design",
+    description:
+      "Is a communication process using visual elements to create a perception of a message being conveyed.",
+  },
+  {
+    id: 4,
+    icon: "fa-bug",
+    title: "Clean Code",
+    description:
+      "Everything that can be understood with little effort and in a short time is considered intuitive.",
+  },
+  {
+    id: 5,
+    icon: "fa-tablet",
+    title: "Fully Responsive",
+    description:
+      "Is an approach to web design that makes web pages render well on a variety of devices.",
+  },
+  {
+    id: 6,
+    icon: "fa-wrench",
+    title: "Problem Solving",
+    description:
+      "Consists of using generic or ad hoc methods in an orderly manner to find solutions to problems.",
+  },
+];
 
 export const techIcons = [
   {
