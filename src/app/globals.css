@@ -697,7 +697,7 @@ select {
 /* Skills Section */
 
 .personal-skills {
-  margin-top: 40px;
+  margin: 50px 0;
 }
 
 .personal-skills h3 {
@@ -708,12 +708,26 @@ select {
 }
 
 .skill-row {
-  gap: 30px;
+  gap: 40px;
   align-items: center;
 }
 
+.skill-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
 .skill-item img {
-  width: 50px;
+  height: 40px;
+}
+
+.skill-item h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #302e4d;
 }
 /* Service Section */
 .service .container {
