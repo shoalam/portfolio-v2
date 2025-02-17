@@ -92,8 +92,8 @@ export const techIcons = [
   },
   {
     id: 4,
-    icon: "/assets/icons/tailwindcss.jpg",
-    title: "Tailwind",
+    icon: "/assets/icons/tailwindcss.png",
+    title: "Tailwind CSS",
   },
   {
     id: 5,
@@ -174,5 +174,68 @@ export const techIcons = [
     id: 20,
     icon: "/assets/icons/wp.png",
     title: "WordPress",
+  },
+];
+
+export const education = [
+  {
+    id: 1,
+    degree: "Master of Laws (LL.M.)",
+    institution: "University of Dhaka",
+    duration: "2012 - 2013",
+    description:
+      "I completed my Master of Laws (LL.M.) at the University of Dhaka, primarily focusing on Comparative Family Laws in Bangladesh.",
+  },
+  {
+    id: 2,
+    degree: "Bachelor of Laws (LL.B. (Hons))",
+    institution: "University of Dhaka",
+    duration: "2006 - 2011",
+    description:
+      "I obtained my Bachelor of Laws (LL.B. (Hons)) from the University of Dhaka, with a primary focus on Bangladeshi laws.",
+  },
+  {
+    id: 3,
+    degree: "Higher Secondary School Certificate",
+    institution: "Shahid Zia Degree College",
+    duration: "2003 - 2005",
+    description:
+      "I completed my Higher Secondary School Certificate from the Rajshahi Education Board.",
+  },
+  {
+    id: 4,
+    degree: "Secondary School Certificate",
+    institution: "Kolakopa Atopjan Memorial High School",
+    duration: "2001 - 2002",
+    description:
+      "I obtained my Secondary School Certificate from the Rajshahi Education Board.",
+  },
+];
+
+export const experiences = [
+  {
+    id: 1,
+    designation: "Full Stack Web Developer",
+    company: "Inleads IT",
+    duration: "Nov 2021 - Present",
+    description:
+      "I've been working with Inleads IT as a Frontend Web Developer for the past three years. As a Frontend Developer at Inleads IT, my primary responsibility is to translate Figma designs into clean, responsive HTML code, ensuring a seamless user experience across devices. I am currenty working with modern technologies such as React js, Next.js, Node.js, and Express.js to build dynamic and interactive web applications. In addition to my current tech stack, I have extensive experience working with PHP, Laravel, Ajax, jQuery, and WordPress.",
+  },
+  {
+    id: 2,
+    designation: "Frontend Developer",
+    company: "Tappware Solutions Ltd.",
+    duration: "Jul 2021 - Nov 2021",
+    description:
+      "As a Frontend Developer at Tappware Solution Ltd., I  worked with a diverse set of technologies, including Bootstrap, Laravel and WordPress, to create responsive and user-friendly web applications.",
+  },
+
+  {
+    id: 3,
+    designation: "Frontend Developer",
+    company: "UqiDev",
+    duration: "Apr 2019 - Jul 2021",
+    description:
+      "As a Frontend Developer at UqiDev, I gained foundational programming skills and extensive hands-on experience with HTML, CSS, and JavaScript. This role provided me with a solid understanding of frontend development principles, enabling me to build responsive and efficient web pages while honing my problem-solving abilities.",
   },
 ];

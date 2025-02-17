@@ -14,7 +14,6 @@ export default function Contact() {
   const [storedData, setStoredData] = useState([]);
   const [statusMessage, setStatusMessage] = useState({ type: "", message: "" });
 
-  // Fetch form data from Firestore on initial load
   useEffect(() => {
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, "contactmessages"));
@@ -28,8 +27,6 @@ export default function Contact() {
     fetchData();
   }, []);
 
-  console.log(storedData);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -42,9 +39,9 @@ export default function Contact() {
     if (statusMessage.message) {
       const timer = setTimeout(() => {
         setStatusMessage({ type: "", message: "" });
-      }, 5000); // 5 seconds
+      }, 5000);
 
-      return () => clearTimeout(timer); // Cleanup to prevent memory leaks
+      return () => clearTimeout(timer);
     }
   }, [statusMessage]);
 
@@ -52,11 +49,8 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      // Store data in Firestore
       const docRef = await addDoc(collection(db, "contactmessages"), formData);
-      //console.log("Document written with ID: ", docRef.id);
 
-      // Update state with new data
       setStoredData((prev) => [...prev, { id: docRef.id, ...formData }]);
 
       setStatusMessage({
@@ -64,7 +58,6 @@ export default function Contact() {
         message: "Message sent successfully!",
       });
 
-      // Clear form fields after submission
       setFormData({
         name: "",
         email: "",
