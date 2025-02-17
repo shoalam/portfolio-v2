@@ -1,4 +1,4 @@
-import { techIcons } from "@/data/data";
+import { education, experiences, techIcons } from "@/data/data";
 import Image from "next/image";
 
 export default function About() {
@@ -102,20 +102,17 @@ export default function About() {
               <div className="row">
                 <div className="timeline-box padd-15">
                   <div className="timeline shadow-dark">
-                    <div className="timeline-item">
-                      <div className="circle-dot"></div>
-                      <h6 className="timeline-date">
-                        <i className="fa fa-calendar"></i> 2014 - 2017
-                      </h6>
-                      <h4 className="timeline-title">
-                        High School SMK Islam Batu
-                      </h4>
-                      <p className="timeline-text">
-                        Basic understanding of programming, logic that I can get
-                        from school and experience high school level
-                        competition.
-                      </p>
-                    </div>
+                    {education.map((item) => (
+                      <div className="timeline-item" key={item.id}>
+                        <div className="circle-dot"></div>
+                        <h6 className="timeline-date">
+                          <i className="fa fa-calendar"></i> {item.duration}
+                        </h6>
+                        <h4 className="timeline-title">{item.institution}</h4>
+                        <h4 className="timeline-title">{item.degree}</h4>
+                        <p className="timeline-text">{item.description}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -126,45 +123,21 @@ export default function About() {
               <div className="row">
                 <div className="timeline-box padd-15">
                   <div className="timeline shadow-dark">
-                    <div className="timeline-item">
-                      <div className="circle-dot"></div>
-                      <h6 className="timeline-date">
-                        <i className="fa fa-calendar"></i> Nov 2021 - present
-                      </h6>
-                      <h4 className="timeline-title">
-                        Frontend Developer - Inleads IT.
-                      </h4>
-                      <p className="timeline-text">
-                        Armed with html, css, wordpress and blogger. I learned
-                        the basics from a programmer for the first time.
-                      </p>
-                    </div>
-                    <div className="timeline-item">
-                      <div className="circle-dot"></div>
-                      <h6 className="timeline-date">
-                        <i className="fa fa-calendar"></i> Jul 2021 - Nov 2021
-                      </h6>
-                      <h4 className="timeline-title">
-                        Frontend Developer - Tappware Solution Ltd.
-                      </h4>
-                      <p className="timeline-text">
-                        Armed with html, css, wordpress and blogger. I learned
-                        the basics from a programmer for the first time.
-                      </p>
-                    </div>
-                    <div className="timeline-item">
-                      <div className="circle-dot"></div>
-                      <h6 className="timeline-date">
-                        <i className="fa fa-calendar"></i> Apr 2019 - Jul 2021
-                      </h6>
-                      <h4 className="timeline-title">
-                        Frontend Developer - UqiDev
-                      </h4>
-                      <p className="timeline-text">
-                        Armed with html, css, wordpress and blogger. I learned
-                        the basics from a programmer for the first time.
-                      </p>
-                    </div>
+                    {experiences.map((experience) => (
+                      <div className="timeline-item" key={experience.id}>
+                        <div className="circle-dot"></div>
+                        <h6 className="timeline-date">
+                          <i className="fa fa-calendar"></i>{" "}
+                          {experience.duration}
+                        </h6>
+                        <h4 className="timeline-title">
+                          {experience.designation} - {experience.company}
+                        </h4>
+                        <p className="timeline-text">
+                          {experience.description}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
