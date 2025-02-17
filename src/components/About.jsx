@@ -85,7 +85,7 @@ export default function About() {
           </div>
 
           <div className="personal-skills">
-            <h3>Technology Stack Includes:</h3>
+            <h3>Technologies I Have Worked With:</h3>
             <div className="row skill-row padd-15">
               {techIcons?.map((item, i) => (
                 <div className="skill-item" key={i}>
