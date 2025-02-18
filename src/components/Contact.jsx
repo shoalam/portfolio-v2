@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { db, collection, addDoc, getDocs } from "@/lib/firebaseConfig";
+import { serverTimestamp } from "firebase/firestore";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -49,7 +50,10 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      const docRef = await addDoc(collection(db, "contactmessages"), formData);
+      const docRef = await addDoc(collection(db, "contactmessages"), {
+        ...formData,
+        created_at: serverTimestamp(),
+      });
 
       setStoredData((prev) => [...prev, { id: docRef.id, ...formData }]);
 
@@ -147,6 +151,7 @@ export default function Contact() {
                 className="form-control"
                 placeholder="Name*"
                 name="name"
+                value={formData?.name}
                 onChange={handleChange}
                 required
               />
@@ -159,6 +164,7 @@ export default function Contact() {
                 className="form-control"
                 placeholder="Email*"
                 name="email"
+                value={formData?.email}
                 onChange={handleChange}
                 required
               />
@@ -173,6 +179,7 @@ export default function Contact() {
                 className="form-control"
                 placeholder="Subject*"
                 name="subject"
+                value={formData?.subject}
                 onChange={handleChange}
               />
             </div>
@@ -185,6 +192,7 @@ export default function Contact() {
                 className="form-control"
                 placeholder="Your Message..."
                 name="message"
+                value={formData?.message}
                 onChange={handleChange}
                 required
               ></textarea>
