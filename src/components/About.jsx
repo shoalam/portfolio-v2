@@ -1,6 +1,11 @@
+"use client";
+
+import { useTheme } from "@/contexts/ThemeContext";
 import { education, experiences, techIcons } from "@/data/data";
 
 export default function About() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <section className="about section" id="about">
       <div className="row">
@@ -88,7 +93,18 @@ export default function About() {
             <div className="row skill-row padd-15">
               {techIcons?.map((item, i) => (
                 <div className="skill-item" key={i}>
-                  <img src={item?.icon} alt={item?.title} />
+                  <img
+                    src={item?.icon}
+                    alt={item?.title}
+                    className={
+                      (item?.title.toLowerCase() === "express.js" ||
+                        item?.title.toLowerCase() === "next.js" ||
+                        item?.title.toLowerCase() === "wordpress") &&
+                      theme === "dark"
+                        ? "dark"
+                        : ""
+                    }
+                  />
                   <h4>{item?.title}</h4>
                 </div>
               ))}
