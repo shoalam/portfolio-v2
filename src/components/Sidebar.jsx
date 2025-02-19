@@ -2,9 +2,13 @@
 import { navItems } from "@/data/data";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import ThemeToggle from "./ThemeToggle";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
+
+  const pathname = usePathname();
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -20,6 +24,7 @@ export default function Sidebar() {
       </div>
 
       <div className="aside-inner">
+        <ThemeToggle />
         <div className="flex justify-center">
           <img
             src="/tuhinphoto.jpg"
@@ -36,7 +41,10 @@ export default function Sidebar() {
             navItems?.map((item) => {
               return (
                 <li key={item?.id}>
-                  <Link href={item?.link}>
+                  <Link
+                    href={item?.link}
+                    className={pathname === item.link ? "active" : ""}
+                  >
                     {" "}
                     <i className="fa fa-home"></i> {item?.title}
                   </Link>

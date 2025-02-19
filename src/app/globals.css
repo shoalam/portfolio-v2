@@ -39,7 +39,7 @@ select {
   min-height: 100vh;
   display: block;
   padding: 50px 30px;
-  position: fixed;
+  position: absolute;
   left: 270px;
   top: 0;
   right: 0;
@@ -729,6 +729,10 @@ select {
   height: 30px;
 }
 
+.skill-item img.dark {
+  filter: invert(1);
+}
+
 .skill-item h4 {
   font-size: 13px;
   font-weight: 700;
@@ -1248,6 +1252,7 @@ select {
 }
 
 /* Dark Body */
+body.dark,
 body.dark .section {
   background-color: #151515;
 }
@@ -1269,6 +1274,8 @@ body.dark .about .about-content h3.title,
 body.dark .about .about-content .skills .skill-item h5,
 body.dark .about .about-content .personal-info .info-item p,
 body.dark .about .about-content .about-text h3,
+body.dark .about .about-content .personal-skills h3,
+body.dark .about .about-content .skill-item h4,
 body.dark .section-title h2,
 body.dark .home .intro h1,
 body.dark .aside .logo a,
